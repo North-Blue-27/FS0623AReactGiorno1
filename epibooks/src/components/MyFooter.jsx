@@ -4,7 +4,7 @@ const MyFooter = () => {
   return (
     <footer className="footer" style={{ backgroundColor: 'lightgray', textAlign: 'center', color: 'White' }}>
       <div className="container">
-        <span className="text-muted">© 2023 EpiBook. All rights reserved.</span>
+        <span className="text-muted">© 2023 EpiBooks. All rights reserved.</span>
       </div>
     </footer>
   );
