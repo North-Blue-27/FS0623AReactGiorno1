@@ -46,7 +46,7 @@ const AllTheBooks = () => {
       <Row xs={1} md={2} lg={3} xl={4} className="g-4">
         {books.map((book) => (
           <Col key={book.asin}>
-          <Card style={{ height: '100%' }}>
+          <Card style={{ height: '100%', backgroundColor: '#17192b', color: '#781c77' }}>
             <div style={{ height: '300px', overflow: 'hidden' }}>
               <Card.Img
                 variant="top"
@@ -57,7 +57,7 @@ const AllTheBooks = () => {
             </div>
             <Card.Body>
               <Card.Title>{book.title}</Card.Title>
-              <Card.Text>Price: ${book.price}</Card.Text>
+              <Card.Text style={{ color: 'White' }}>Price: €{book.price}</Card.Text>
             </Card.Body>
           </Card>
         </Col>

@@ -7,7 +7,7 @@ import AllTheBooks from  './components/AllTheBooks';
 
 function App() {
   return (
-    <div className="App" style={{ backgroundColor: 'white' }}>
+    <div className="App" style={{ backgroundColor: 'White' }}>
       <MyNav />
       <Welcome />
       <AllTheBooks />
