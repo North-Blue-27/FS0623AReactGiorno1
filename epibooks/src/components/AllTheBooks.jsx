@@ -4,6 +4,7 @@ import horrorData from '../data/horror.json';
 import fantasyData from '../data/fantasy.json';
 import thrillerData from '../data/history.json';
 import romanceData from '../data/romance.json';
+import scifiData from '../data/scifi.json';
 
 const AllTheBooks = () => {
   const [books, setBooks] = useState(horrorData);
@@ -22,6 +23,9 @@ const AllTheBooks = () => {
       case 'romance':
         setBooks(romanceData);
         break;
+      case 'scifi':
+        setBooks(scifiData);
+        break;
       default:
         setBooks(horrorData);
     }
@@ -39,6 +43,7 @@ const AllTheBooks = () => {
             <Dropdown.Item onClick={() => changeCategory('fantasy')}>Fantasy</Dropdown.Item>
             <Dropdown.Item onClick={() => changeCategory('thriller')}>Thriller</Dropdown.Item>
             <Dropdown.Item onClick={() => changeCategory('romance')}>Romance</Dropdown.Item>
+            <Dropdown.Item onClick={() => changeCategory('scifi')}>Scifi</Dropdown.Item>
           </DropdownButton>
         </Col>
       </Row>
