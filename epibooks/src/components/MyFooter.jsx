@@ -2,9 +2,9 @@ import React from 'react';
 
 const MyFooter = () => {
   return (
-    <footer className="footer" style={{ backgroundColor: 'lightgray', textAlign: 'center', color: 'White' }}>
+    <footer className="footer" style={{ backgroundColor: '#17192b', textAlign: 'center',color: '#781c77' }}>
       <div className="container">
-        <span className="text-muted">© 2023 EpiBooks. All rights reserved.</span>
+        <span  style={{ color: '#781c77' }}>© 2023 EpiBooks. All rights reserved.</span>
       </div>
     </footer>
   );
