@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Container, Card, Row, Col, Dropdown, DropdownButton } from 'react-bootstrap';
-import horrorData from '../data/horror.json'; // Assicurati di avere i file JSON correttamente importati
+import horrorData from '../data/horror.json';
 import fantasyData from '../data/fantasy.json';
 import thrillerData from '../data/history.json';
 import romanceData from '../data/romance.json';
