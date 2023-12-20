@@ -38,7 +38,7 @@ const AllTheBooks = () => {
       <Container>
         <Row className="justify-content-between align-items-center mb-3">
           <Col xs="auto">
-            <h2>{currentCategory.charAt(0).toUpperCase() + currentCategory.slice(1)} Books</h2>
+            <h2 style={{color: '#781c77'}}>{currentCategory.charAt(0).toUpperCase() + currentCategory.slice(1)} Books</h2>
           </Col>
           <Col xs="auto">
             <DropdownButton id="dropdown-basic-button" title="Select Category">
@@ -59,8 +59,8 @@ const AllTheBooks = () => {
               <Card.Img
                 variant="top"
                 src={book.img}
-                className="img-fluid"
-                style={{ height: '100%', objectFit: 'contain' }}
+                className="img-fluid w-100"
+                style={{ height: '100%', objectFit: 'fill' }}
               />
             </div>
             <Card.Body>
