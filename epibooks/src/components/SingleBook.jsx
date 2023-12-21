@@ -20,6 +20,7 @@ const SingleBook = ({ book }) => {
           position: "relative",
           maxWidth: "18rem",
           cursor: "pointer",
+          border: selected ? "2px solid #f44336" : "none",
         }}
         onClick={handleBookClick}
       >
