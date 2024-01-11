@@ -1,14 +1,14 @@
 import React, { useState } from "react";
 import SingleBook from "../components/SingleBook";
 import { Row, Col, Container } from "react-bootstrap";
-import CategoryFilter from "../components/CategoryFilter"; // Importa il componente CategoryFilter
+import CategoryFilter from "../components/CategoryFilter";
 import horrorData from "../data/horror.json";
 import fantasyData from "../data/fantasy.json";
 import thrillerData from "../data/history.json";
 import romanceData from "../data/romance.json";
 import scifiData from "../data/scifi.json";
 
-const BookList = () => {
+const BookList = ({ onSelectBook }) => {
   const [searchQuery, setSearchQuery] = useState("");
   const [currentCategory, setCurrentCategory] = useState("all");
 
@@ -74,7 +74,7 @@ const BookList = () => {
       <Row xs={1} md={3} lg={4} xl={5} className="g-4">
         {filteredBooks.map((book, index) => (
           <Col key={index}>
-            <SingleBook book={book} />
+            <SingleBook book={book} onSelectBook={onSelectBook} /> {/* Passa onSelectBook a SingleBook */}
           </Col>
         ))}
       </Row>
@@ -83,3 +83,6 @@ const BookList = () => {
 };
 
 export default BookList;
+
+
+

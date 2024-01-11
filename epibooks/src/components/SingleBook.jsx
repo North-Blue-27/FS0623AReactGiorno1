@@ -1,12 +1,13 @@
-import React, { useState } from "react";
+import React from "react";
 import { Card } from "react-bootstrap";
-import CommentArea from "./CommentArea";
 
-const SingleBook = ({ book }) => {
-  const [selected, setSelected] = useState(false);
-
+const SingleBook = ({ book, onSelectBook, selectedBookId }) => {
   const handleBookClick = () => {
-    setSelected(!selected);
+    if (selectedBookId === book.asin) {
+      onSelectBook(null); // Deseleziona il libro se viene cliccato nuovamente
+    } else {
+      onSelectBook(book.asin);
+    }
   };
 
   return (
@@ -20,7 +21,7 @@ const SingleBook = ({ book }) => {
           position: "relative",
           maxWidth: "18rem",
           cursor: "pointer",
-          border: selected ? "2px solid #f44336" : "none",
+          border: selectedBookId === book.asin ? "2px solid #f44336" : "none", // Applica il bordo solo se è selezionato
         }}
         onClick={handleBookClick}
       >
@@ -42,7 +43,6 @@ const SingleBook = ({ book }) => {
           </Card.Text>
         </Card.Body>
       </Card>
-      {selected && <CommentArea bookId={book.asin} />} {/* Corretto passaggio di book.id */}
     </div>
   );
 };

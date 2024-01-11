@@ -11,7 +11,7 @@ const CommentsList = ({ comments }) => {
 
   return (
     <div>
-      <h2 style={headingStyle}>Comments</h2>
+      <h2 style={headingStyle}>Comments:</h2>
       <ul style={listStyle}>
         {comments.map((comment, index) => (
           <li key={index}>{comment.comment}</li>

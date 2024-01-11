@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import AddComment from "../components/AddComment";
 import CommentsList from "./CommentList";
+
 const CommentArea = ({ bookId }) => {
   const [comments, setComments] = useState([]);
 
@@ -12,7 +13,7 @@ const CommentArea = ({ bookId }) => {
           {
             headers: {
               Authorization:
-                "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NTg0NDY1ZGI1MjViYjAwMThlZDA4MGUiLCJpYXQiOjE3MDMxNjc1ODEsImV4cCI6MTcwNDM3NzE4MX0.HS9nv-K73ygJNWzEkuxVlilxfd9wdUND0yDypYsuftI",
+                "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NTlkNzU0OWU2Mjg4NjAwMTg4M2Y2ZmIiLCJpYXQiOjE3MDQ4MTc5OTMsImV4cCI6MTcwNjAyNzU5M30.HydpA5_pwb_b1sGVWtYNunQ26-8UXVR1ETaQnino7ys",
             },
           }
         );
@@ -21,9 +22,11 @@ const CommentArea = ({ bookId }) => {
           setComments(data);
         } else {
           // Gestione errore
+          console.error("Errore durante il recupero dei commenti");
         }
       } catch (error) {
         // Gestione errore fetch
+        console.error("Errore nella richiesta dei commenti:", error);
       }
     };
 
