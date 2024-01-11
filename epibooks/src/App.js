@@ -17,11 +17,17 @@ function App() {
     <div className="App" style={{ backgroundColor: '#0f101c' }}>
       <MyNav />
       <Welcome />
-      <div style={{ display: 'flex' }}>
-        <BookList onSelectBook={handleBookSelect} />
-        {selectedBookId && ( // Mostra CommentArea solo se un libro è selezionato
-          <CommentArea bookId={selectedBookId} />
-        )}
+      <div className="container-fluid">
+        <div className="row">
+          <div className="col-md-9">
+            <BookList onSelectBook={handleBookSelect} />
+          </div>
+          <div className="col-md-3" style={{ maxHeight: '100vh', overflowY: 'auto', wordWrap: 'break-word' }}>
+            {selectedBookId && (
+              <CommentArea bookId={selectedBookId} />
+            )}
+          </div>
+        </div>
       </div>
       <MyFooter />
     </div>

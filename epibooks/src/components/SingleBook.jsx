@@ -3,11 +3,7 @@ import { Card } from "react-bootstrap";
 
 const SingleBook = ({ book, onSelectBook, selectedBookId }) => {
   const handleBookClick = () => {
-    if (selectedBookId === book.asin) {
-      onSelectBook(null); // Deseleziona il libro se viene cliccato nuovamente
-    } else {
-      onSelectBook(book.asin);
-    }
+    onSelectBook(selectedBookId === book.asin ? null : book.asin);
   };
 
   return (
@@ -21,7 +17,7 @@ const SingleBook = ({ book, onSelectBook, selectedBookId }) => {
           position: "relative",
           maxWidth: "18rem",
           cursor: "pointer",
-          border: selectedBookId === book.asin ? "2px solid #f44336" : "none", // Applica il bordo solo se è selezionato
+          border: selectedBookId === book.asin ? "2px solid #f44336" : "none",
         }}
         onClick={handleBookClick}
       >

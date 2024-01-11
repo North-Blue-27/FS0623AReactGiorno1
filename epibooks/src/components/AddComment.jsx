@@ -1,6 +1,6 @@
 import React from "react";
 
-const AddComment = ({ bookId }) => {
+const AddComment = ({ bookId, onAddCommentSuccess }) => {
   const [comment, setComment] = React.useState("");
   const [rate, setRate] = React.useState(1);
 
@@ -13,7 +13,7 @@ const AddComment = ({ bookId }) => {
           headers: {
             "Content-Type": "application/json",
             Authorization:
-              "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NTg0NDY1ZGI1MjViYjAwMThlZDA4MGUiLCJpYXQiOjE3MDMxNjc1ODEsImV4cCI6MTcwNDM3NzE4MX0.HS9nv-K73ygJNWzEkuxVlilxfd9wdUND0yDypYsuftI",
+              "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NTlmZmU5OTI5ZTM2YjAwMTg2N2VkMDIiLCJpYXQiOjE3MDQ5ODQyMTcsImV4cCI6MTcwNjE5MzgxN30.NsNU1x78fvDgI6mLxG571RIo0yOeBRLlBIAmp9RJFBg",
           },
           body: JSON.stringify({
             comment,
@@ -23,13 +23,23 @@ const AddComment = ({ bookId }) => {
         }
       );
       if (response.ok) {
-        console.log("Comment added successfully!");
+        console.log("Commento aggiunto con successo!");
         // Aggiorna la lista dei commenti...
+
+        // Chiamata alla funzione di callback
+        if (onAddCommentSuccess) {
+          onAddCommentSuccess();
+        }
+
+        // Pulisci il campo del commento dopo l'aggiunta con successo
+        setComment("");
+        setRate(1);
       } else {
-        console.error("Failed to add comment");
+        console.error("Impossibile aggiungere il commento");
+        console.log("Response:", await response.json());
       }
     } catch (error) {
-      console.error("An error occurred", error);
+      console.error("Si è verificato un errore", error);
     }
   };
 
@@ -37,7 +47,7 @@ const AddComment = ({ bookId }) => {
     <div>
       <input
         type="text"
-        placeholder="Add comment..."
+        placeholder="Aggiungi un commento..."
         value={comment}
         onChange={(e) => setComment(e.target.value)}
       />
@@ -48,22 +58,9 @@ const AddComment = ({ bookId }) => {
           </option>
         ))}
       </select>
-      <button onClick={handleAddComment}>Add Comment</button>
+      <button onClick={handleAddComment}>Aggiungi Commento</button>
     </div>
   );
 };
 
 export default AddComment;
-
-
-
-
-
-
-
-
-
-
-
-
-

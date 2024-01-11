@@ -4,6 +4,7 @@ import CommentsList from "./CommentList";
 
 const CommentArea = ({ bookId }) => {
   const [comments, setComments] = useState([]);
+  const [successMessage, setSuccessMessage] = useState(null);
 
   useEffect(() => {
     const fetchComments = async () => {
@@ -13,7 +14,7 @@ const CommentArea = ({ bookId }) => {
           {
             headers: {
               Authorization:
-                "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NTlkNzU0OWU2Mjg4NjAwMTg4M2Y2ZmIiLCJpYXQiOjE3MDQ4MTc5OTMsImV4cCI6MTcwNjAyNzU5M30.HydpA5_pwb_b1sGVWtYNunQ26-8UXVR1ETaQnino7ys",
+                "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NTlmZmU5OTI5ZTM2YjAwMTg2N2VkMDIiLCJpYXQiOjE3MDQ5ODQyMTcsImV4cCI6MTcwNjE5MzgxN30.NsNU1x78fvDgI6mLxG571RIo0yOeBRLlBIAmp9RJFBg",
             },
           }
         );
@@ -21,11 +22,9 @@ const CommentArea = ({ bookId }) => {
           const data = await response.json();
           setComments(data);
         } else {
-          // Gestione errore
           console.error("Errore durante il recupero dei commenti");
         }
       } catch (error) {
-        // Gestione errore fetch
         console.error("Errore nella richiesta dei commenti:", error);
       }
     };
@@ -33,10 +32,34 @@ const CommentArea = ({ bookId }) => {
     fetchComments();
   }, [bookId]);
 
+  const handleAddCommentSuccess = () => {
+    setSuccessMessage("Commento aggiunto con successo.");
+  };
+
+  const handleCloseSuccessMessage = () => {
+    setSuccessMessage(null);
+  };
+
   return (
     <div>
+      {successMessage && (
+        <div className="alert alert-success" role="alert">
+          {successMessage}
+          <button
+            type="button"
+            className="close"
+            aria-label="Close"
+            onClick={handleCloseSuccessMessage}
+          >
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+      )}
       <CommentsList comments={comments} />
-      <AddComment bookId={bookId} /> {/* Corretto passaggio di bookId */}
+      <AddComment
+        bookId={bookId}
+        onAddCommentSuccess={handleAddCommentSuccess}
+      />
     </div>
   );
 };
